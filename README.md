@@ -1,2 +1,2 @@
-# DT-B-log
+# DTBlog
 Content Management System
