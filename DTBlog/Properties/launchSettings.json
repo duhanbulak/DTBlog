@@ -1,0 +1,21 @@
+﻿{
+  "iisSettings": {
+    "windowsAuthentication": false, 
+    "anonymousAuthentication": true, 
+    "iisExpress": {
+      "applicationUrl": "http://localhost:58504",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "DTBlog": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "applicationUrl": "http://localhost:5000",
+      "environmentVariables": {
+        "MYSQL_URI": "server=127.0.0.1;port=19003;database=dtblog;user=root;password=root",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html style="height: auto;">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title> DT(B)log - @ViewData["Title"]</title>
+
+    <environment include="Development">
+        <!-- Font Awesome Icons -->
+        <link href="~/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+        <!-- Theme style -->
+        <link rel="stylesheet" href="~/css/general.min.css">
+        <!-- Google Font: Source Sans Pro -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+        <link href="~/css/site.css" rel="stylesheet" />
+    </environment>
+</head>
+<body class="hold-transition layout-top-nav allBody">
+    <div class="wrapper">
+
+        <partial name="_TopNavPartial" />
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>
+                    <div style="float: left">&copy; 2020 - DT(B)log</div>
+                    <div style="text-align: right">
+                        <a href="/Admin/Index">Duhan</a>
+                    </div>
+                </p>
+            </footer>
+        </div>
+
+        <environment include="Development">
+            <script src="~/js/site.js" asp-append-version="true"></script>
+            <!-- jQuery -->
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <!-- Bootstrap 4 -->
+            <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+            <!-- AdminLTE App -->
+            <script src="~/js/adminlte.min.js"></script>
+        </environment>
+
+        @RenderSection("Scripts", required: false)
+    </div>
+</body>
+</html>

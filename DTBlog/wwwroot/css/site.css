@@ -1,0 +1,25 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+.logo-wrap {
+    background-image: url('https://static.wixstatic.com/media/da39e2_307d7661298d43b8baf800427c2518ea~mv2.jpg/v1/fill/w_980,h_446,al_c,q_85,usm_0.66_1.00_0.01/103-unlu-tablo%20(1).webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 350px;
+    margin-bottom: 10px;
+}
+
+.allBody {
+    background-color: #dbdbdb;
+}
+
+.navbarText {
+    min-width: 80%;
+    max-width: 800px;
+    float: left;
+}
+
+.navbarSearch {
+    min-width: 20%;
+    max-width: 800px;
+    float: right;
+}
