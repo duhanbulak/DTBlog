@@ -61,4 +61,7 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
-* linguist-language=C#
+js/* linguist-vendored
+js/init.js linguist-vendored=false
+css/* linguist-vendored
+css/style.css linguist-vendored=false
