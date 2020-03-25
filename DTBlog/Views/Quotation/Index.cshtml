@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DTBlog.Data.Model.QuotationModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Alıntılar</h1>
+                    &emsp;<a asp-action="Create" style="font-size: 18px;">Yeni oluştur</a>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="">
+                    İçerik
+                </th>
+                <th>
+                    Kimin
+                </th>
+                <th>
+                    Son Güncelleme Tarihi
+                </th>
+                <th>
+                    Değişiklik Yapan/Oluşturan Kullanıcı
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.Raw(item.QuoteContent.Substring(0, 25) + "...")
+                    </td>
+                    <td>
+                        @item.QuoteFrom
+                    </td>
+                    <td>
+                        @item.ChangedDate
+                    </td>
+                    <td>
+                        @item.ChangedUser.Name @item.ChangedUser.Surname
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Ayrıntılar</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

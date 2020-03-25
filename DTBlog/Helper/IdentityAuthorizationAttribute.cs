@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DTBlog.Data.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Newtonsoft.Json;
 
 namespace DTBlog.Helper
 {
     public class IdentityAuthorizationAttribute : ActionFilterAttribute, IAuthorizationFilter
     {
-        //public bool SuperAdminRequired { get; set; } = false;
+        public bool SuperAdminRequired { get; set; } = false;
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
@@ -18,12 +20,12 @@ namespace DTBlog.Helper
                 return;
             }
 
-            //UserModel user = JsonConvert.DeserializeObject<UserModel>(userInfo);
-            //if (SuperAdminRequired && !user.IsSuperAdmin)
-            //{
-            //    context.Result = new RedirectToActionResult("Index", "SuitHome", new { });
-            //    return;
-            //}
+            UserModel user = JsonConvert.DeserializeObject<UserModel>(userInfo);
+            if (SuperAdminRequired && !user.IsSuperAdmin)
+            {
+                context.Result = new RedirectToActionResult("Index", "Home", new { });
+                return;
+            }
         }
     }
 }

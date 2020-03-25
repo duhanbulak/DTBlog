@@ -33,7 +33,7 @@ namespace DTBlog.Controllers
         /// <param name="password"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> SignIn(string email, string password)
+        public IActionResult SignIn(string email, string password)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
@@ -51,7 +51,11 @@ namespace DTBlog.Controllers
                 }
 
                 HttpContext.Session.SetString("USER_INFO", JsonConvert.SerializeObject(user));
-                return RedirectToAction("Index", "Home");
+
+                if (user.IsSuperAdmin == true)
+                    HttpContext.Session.SetString("USER_NAME", user.Name);
+
+                return RedirectToAction("Index", "Home", false);
             }
         }
 

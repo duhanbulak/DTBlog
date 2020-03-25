@@ -1,0 +1,63 @@
+﻿@model DTBlog.Data.Model.QuotationModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Alıntı - Düzenle</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/Quotation/Index">Alıntı</a></li>
+                        <li class="breadcrumb-item active">Ekle</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+        @using (Html.BeginForm("Edit", "Quotation", FormMethod.Post))
+        {
+            @Html.HiddenFor(m=>m.Id, new { @placeholder = Model.Id})
+            @Html.TextAreaFor(m => m.QuoteContent, new { @placeholder = Model.QuoteContent, @class = "form-control", style = "min-height: 200px" })
+            <br />
+            @Html.TextBoxFor(m => m.QuoteFrom, new { @placeholder = Model.QuoteFrom, @class = "form-control" })
+            <br />
+            //@Html.TextBoxFor(m => m., new { @placeholder = "Sokak", @class = "form-control" }) Resim ekleme
+            //<br />
+            <br />
+            <button type="submit" class="btn btn-default">Düzenle</button>
+        }
+    </section>
+    <div>
+        <a asp-action="Index">&lt;- Alıntılar sayfasına dön.</a>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea',
+            height: 270,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+            ],
+            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i']
+        });
+    </script>
+}

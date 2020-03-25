@@ -1,0 +1,109 @@
+﻿@model DTBlog.Data.Model.QuotationModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Alıntı ayrıntısı</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/Quotation/Index">Alıntı</a></li>
+                        <li class="breadcrumb-item active">Ekle</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+        <dl class="dl-horizontal">
+            <dt>
+                Alıntı içeriği
+            </dt>
+            <dd>
+                @Html.Raw(Model.QuoteContent)
+            </dd>
+            <dt>
+                İçerik Sahibi
+            </dt>
+            <dd>
+                @Model.QuoteFrom
+            </dd>
+            <dt>
+                İçerik Resmi/Linki
+            </dt>
+            <dd>
+                @Model.QuoteImage
+            </dd>
+            <dt>
+                Oluşturulma tarihi
+            </dt>
+            <dd>
+                @Model.CreatedDate
+            </dd>
+            <dt>
+                Son değişiklik tarihi
+            </dt>
+            <dd>
+                @Model.ChangedDate
+            </dd>
+            <dt>
+                Son değişiklik yapan kullanıcı
+            </dt>
+            <dd>
+                <ul>
+                    <li>
+                        Adı:
+                        @Html.DisplayFor(model => model.ChangedUser.Name)
+                    </li>
+                    <li>
+                        Soyadı:
+                        @Html.DisplayFor(model => model.ChangedUser.Surname)
+                    </li>
+                    <li>
+                        Mail Adresi:
+                        @Html.DisplayFor(model => model.ChangedUser.MailAddress)
+                    </li>
+                    <li>
+                        Telefon Numarası:
+                        @Html.DisplayFor(model => model.ChangedUser.PhoneNumber)
+                    </li>
+                </ul>
+            </dd>
+            <dt>
+                Oluşturan kullanıcı bilgileri
+            </dt>
+            <dd>
+                <ul>
+                    <li>
+                        Adı:
+                        @Html.DisplayFor(model => model.UserModel.Name)
+                    </li>
+                    <li>
+                        Soyadı:
+                        @Html.DisplayFor(model => model.UserModel.Surname)
+                    </li>
+                    <li>
+                        Mail Adresi:
+                        @Html.DisplayFor(model => model.UserModel.MailAddress)
+                    </li>
+                    <li>
+                        Telefon Numarası:
+                        @Html.DisplayFor(model => model.UserModel.PhoneNumber)
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <div>
+            <a asp-action="Index">&lt;- Alıntılar sayfasına geri dön</a>  | 
+            <a asp-action="Edit" asp-route-id="@Model.Id">Düzenle</a>
+        </div>
+    </section>
+</div>
+

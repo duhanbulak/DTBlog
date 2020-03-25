@@ -28,9 +28,14 @@ namespace DTBlog.Data.Model
         public bool IsSuperAdmin { get; set; }
 
         public virtual ICollection<PostModel> PostModels { get; set; }
+        public virtual ICollection<PostModel> ChangeUserPost { get; set; }
         public virtual ICollection<MusicModel> MusicModels { get; set; }
+        public virtual ICollection<MusicModel> ChangeUserMusic { get; set; }
         public virtual ICollection<NewsModel> NewsModels { get; set; }
+        public virtual ICollection<NewsModel> ChangeUserNews { get; set; }
         public virtual ICollection<AuthorModel> AuthorModels { get; set; }
+        public virtual ICollection<AuthorModel> ChangeUserAuthor { get; set; }
         public virtual ICollection<QuotationModel> QuotationModels { get; set; }
+        public virtual ICollection<QuotationModel> ChangeUserQuot { get; set; }
     }
 }

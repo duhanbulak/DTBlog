@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using System.Transactions;
 
 namespace DTBlog.DataAccess.UnitOfWork
@@ -81,6 +82,55 @@ namespace DTBlog.DataAccess.UnitOfWork
                 using (TransactionScope tScope = new TransactionScope())
                 {
                     result = DbContext.SaveChanges();
+                    tScope.Complete();
+                }
+                return result;
+            }
+            catch (ValidationException ex)
+            {
+                string errorString = ex.Message;
+                //LogTrackedEntries(errorString);
+                return -1;
+            }
+            catch (DbUpdateException ex)
+            {
+                string errorString = ex.Message;
+                if (ex.InnerException != null)
+                {
+                    errorString += ex.InnerException.Message;
+                    if (ex.InnerException.InnerException != null)
+                    {
+                        errorString += ex.InnerException.InnerException.Message;
+                        ErrorMessageList.Add(ex.InnerException.InnerException.Message);
+                    }
+                    else
+                    {
+                        ErrorMessageList.Add(ex.InnerException.Message);
+                    }
+                }
+                //LogTrackedEntries(errorString);
+                return -1;
+            }
+            catch (Exception ex)
+            {
+                //LogTrackedEntries(ex.Message);
+                ErrorMessageList.Add(ex.Message);
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// Değişiklikleri kaydet.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<int> AsyncSaveChanges()
+        {
+            try
+            {
+                int result = 0;
+                using (TransactionScope tScope = new TransactionScope())
+                {
+                    result = await DbContext.SaveChangesAsync();
                     tScope.Complete();
                 }
                 return result;
